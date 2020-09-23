@@ -16,16 +16,20 @@ def login(request):
         if user is not None:
             if user.last_name == "admin":
                 auth.login(request, user)
-                return HttpResponse( 'Logged in ADMIN')
+                data1 = User.objects.filter(username=request.user)
+                return render(request, 'admin_dashboard.html',{'data1':data1})
             elif user.last_name == "staff":
                 auth.login(request, user)
-                return HttpResponse( 'Logged in STAFF')
+                data1 = User.objects.filter(username=request.user)
+                return render(request, 'staff_dashboard.html',{'data1':data1})
             elif user.last_name == "faculty":
                 auth.login(request, user)
-                return HttpResponse( 'Logged in FACULTY')
+                data1 = User.objects.filter(username=request.user)
+                return render(request, 'faculty_dashboard.html',{'data1':data1})
             else :
                 auth.login(request, user)
-                return HttpResponse( 'Logged in STUDENT')
+                data1 = User.objects.filter(username=request.user)
+                return render(request, 'student_dashboard.html',{'data1':data1})
         else:
             return HttpResponse( 'usernameError')
     else:
