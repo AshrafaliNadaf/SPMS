@@ -29,13 +29,14 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Login</h1>
                   </div>
-                  <form class="user">
+                  <form method="POST" action="{% url 'login' %}" id="loginup-form" class="user">
+                      {% csrf_token %}
                     <div class="form-group">
-                      <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                      <input type="text" class="form-control" name="username" aria-describedby="emailHelp"
                         placeholder="Username">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" class="form-control" name="password" placeholder="Password">
                     </div>
                     <div class="form-group">
                       {% comment %} <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
@@ -45,7 +46,7 @@
                       </div> {% endcomment %}
                     </div>
                     <div class="form-group">
-                      <a href={{"Home"}} class="btn btn-primary btn-block">Login</a>
+                      <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block" value="Login"/>
                     </div>
                   </form>
                   <hr>
